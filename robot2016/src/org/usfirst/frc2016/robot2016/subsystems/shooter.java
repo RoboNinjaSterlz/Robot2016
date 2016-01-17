@@ -40,11 +40,15 @@ public class shooter extends Subsystem {
     	compressor.start();
     }
     public void shoot() {
-    	
+    	shootSolenoid.set(DoubleSolenoid.Value.kForward);
     }
     
     public void retract() {
-    	
+    	shootSolenoid.set(DoubleSolenoid.Value.kReverse);
+    }
+
+    public void off() {
+    	shootSolenoid.set(DoubleSolenoid.Value.kOff);
     }
 
     public void initDefaultCommand() {
