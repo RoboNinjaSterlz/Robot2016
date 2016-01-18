@@ -58,7 +58,7 @@ public class RobotMap {
         drivetrainRobotDrive.setSafetyEnabled(true);
         drivetrainRobotDrive.setExpiration(0.1);
         drivetrainRobotDrive.setSensitivity(0.5);
-        drivetrainRobotDrive.setMaxOutput(1.0);
+        drivetrainRobotDrive.setMaxOutput(0.95);
 
         liftliftTalon = new CANTalon(0);
         LiveWindow.addActuator("lift", "liftTalon", liftliftTalon);
