@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class shoot extends Command {
 
-    private final double shootDelay = .5;
+    private final double shootDelay = 1;
     private final double retractDelay = .25;
 	private Timer shotTimer = new Timer();
     private boolean retracting = false;
@@ -48,19 +48,21 @@ public class shoot extends Command {
     	shotTimer.start();
     	Robot.shooter.shoot();
     }
+    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (shotTimer.hasPeriodPassed(shootDelay) && !retracting)  {
+    	if (shotTimer.get()>1 && !retracting)  {
     		shotTimer.reset();
     		shotTimer.start();
     		Robot.shooter.retract();
+    		retracting=true;
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (shotTimer.hasPeriodPassed(retractDelay) && retracting)  {
+    	if (shotTimer.get()>1 && retracting)  {
     		Robot.shooter.off();
     		return true;
     	}
