@@ -63,7 +63,7 @@ public class OI {
         driveJoy = new Joystick(0);
         
         trigger = new JoystickButton(driveJoy, 1);
-        trigger.whenPressed(new shoot());
+        trigger.whenPressed(new ShooterForward());
 
 
         // SmartDashboard Buttons
