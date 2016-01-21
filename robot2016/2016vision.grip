@@ -287,7 +287,7 @@
       <property name="path[227]" value="C:\2016\2016_Images\RealFullField\348.jpg"/>
       <property name="path[159]" value="C:\2016\2016_Images\RealFullField\276.jpg"/>
       <property name="path[123]" value="C:\2016\2016_Images\RealFullField\238.jpg"/>
-      <property name="index" value="152"/>
+      <property name="index" value="236"/>
       <property name="path[119]" value="C:\2016\2016_Images\RealFullField\234.jpg"/>
       <property name="path[374]" value="C:\2016\2016_Images\RealFullField\527.jpg"/>
       <property name="path[270]" value="C:\2016\2016_Images\RealFullField\393.jpg"/>
@@ -459,55 +459,116 @@
       <grip:Input step="3" socket="6">
         <value>1000.0</value>
       </grip:Input>
-      <grip:Output step="3" socket="0" previewed="true"/>
+      <grip:Output step="3" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="Convex Hulls">
+      <grip:Input step="4" socket="0"/>
+      <grip:Output step="4" socket="0" previewed="true"/>
     </grip:Step>
     <grip:Step name="Publish ContoursReport">
-      <grip:Input step="4" socket="0"/>
-      <grip:Input step="4" socket="1">
+      <grip:Input step="5" socket="0"/>
+      <grip:Input step="5" socket="1">
         <value>ContoursReport</value>
       </grip:Input>
-      <grip:Input step="4" socket="2">
+      <grip:Input step="5" socket="2">
         <value>true</value>
       </grip:Input>
-      <grip:Input step="4" socket="3">
+      <grip:Input step="5" socket="3">
         <value>true</value>
       </grip:Input>
-      <grip:Input step="4" socket="4">
+      <grip:Input step="5" socket="4">
         <value>true</value>
       </grip:Input>
-      <grip:Input step="4" socket="5">
+      <grip:Input step="5" socket="5">
         <value>false</value>
       </grip:Input>
-      <grip:Input step="4" socket="6">
+      <grip:Input step="5" socket="6">
+        <value>true</value>
+      </grip:Input>
+    </grip:Step>
+    <grip:Step name="Find Lines">
+      <grip:Input step="6" socket="0"/>
+      <grip:Output step="6" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="Filter Lines">
+      <grip:Input step="7" socket="0"/>
+      <grip:Input step="7" socket="1">
+        <value>28.0</value>
+      </grip:Input>
+      <grip:Input step="7" socket="2">
+        <value>
+          <double>142.44604316546764</double>
+          <double>215.63139931740616</double>
+        </value>
+      </grip:Input>
+      <grip:Output step="7" socket="0" previewed="true"/>
+    </grip:Step>
+    <grip:Step name="Publish LinesReport">
+      <grip:Input step="8" socket="0"/>
+      <grip:Input step="8" socket="1">
+        <value>myLinesReport</value>
+      </grip:Input>
+      <grip:Input step="8" socket="2">
+        <value>true</value>
+      </grip:Input>
+      <grip:Input step="8" socket="3">
+        <value>true</value>
+      </grip:Input>
+      <grip:Input step="8" socket="4">
+        <value>true</value>
+      </grip:Input>
+      <grip:Input step="8" socket="5">
+        <value>true</value>
+      </grip:Input>
+      <grip:Input step="8" socket="6">
+        <value>true</value>
+      </grip:Input>
+      <grip:Input step="8" socket="7">
         <value>true</value>
       </grip:Input>
     </grip:Step>
   </steps>
   <connections>
     <grip:Connection>
+      <grip:Output step="1" socket="0" previewed="false"/>
+      <grip:Input step="6" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
       <grip:Output step="0" socket="0" previewed="false"/>
       <grip:Input step="1" socket="0"/>
     </grip:Connection>
     <grip:Connection>
-      <grip:Output step="1" socket="0" previewed="false"/>
-      <grip:Input step="2" socket="0"/>
-    </grip:Connection>
-    <grip:Connection>
-      <grip:Output source="0" socket="0" previewed="true"/>
-      <grip:Input step="0" socket="0"/>
+      <grip:Output step="7" socket="0" previewed="true"/>
+      <grip:Input step="8" socket="0"/>
     </grip:Connection>
     <grip:Connection>
       <grip:Output step="2" socket="0" previewed="false"/>
       <grip:Input step="3" socket="0"/>
     </grip:Connection>
     <grip:Connection>
-      <grip:Output step="3" socket="0" previewed="true"/>
+      <grip:Output step="4" socket="0" previewed="true"/>
+      <grip:Input step="5" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output source="0" socket="0" previewed="true"/>
+      <grip:Input step="0" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="3" socket="0" previewed="false"/>
       <grip:Input step="4" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="1" socket="0" previewed="false"/>
+      <grip:Input step="2" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="6" socket="0" previewed="false"/>
+      <grip:Input step="7" socket="0"/>
     </grip:Connection>
   </connections>
   <settings>
     <teamNumber>2016</teamNumber>
-    <publishAddress></publishAddress>
+    <publishAddress>roborio-2016-frc.local</publishAddress>
     <deployAddress></deployAddress>
   </settings>
 </grip:Pipeline>
