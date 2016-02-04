@@ -15,6 +15,7 @@ package org.usfirst.frc2016.robot2016;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
@@ -37,6 +38,7 @@ public class RobotMap {
     public static DoubleSolenoid shootershootSolenoid;
     public static CANTalon shooterLift;
     public static SpeedController shooterVacuumTalon;
+    public static DigitalInput shootershooterLowerLimit;
     public static SpeedController drivetrainleftdrive;
     public static SpeedController drivetrainrightdrive;
     public static RobotDrive drivetrainRobotDrive;
@@ -60,6 +62,9 @@ public class RobotMap {
         
         shooterVacuumTalon = new Spark(3);
         LiveWindow.addActuator("shooter", "VacuumTalon", (Spark) shooterVacuumTalon);
+        
+        shootershooterLowerLimit = new DigitalInput(4);
+        LiveWindow.addSensor("shooter", "shooterLowerLimit", shootershooterLowerLimit);
         
         drivetrainleftdrive = new Spark(0);
         LiveWindow.addActuator("drivetrain", "leftdrive", (Spark) drivetrainleftdrive);

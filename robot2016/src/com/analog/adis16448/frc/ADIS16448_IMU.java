@@ -379,7 +379,7 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, LiveWind
 
         norm = Math.sqrt(s1 * s1 + s2 * s2 + s3 * s3 + s4 * s4);
         if (norm > 0.0) {
-          norm = 1.0 / norm;  //normalise gradient step
+          norm = 1.0 / norm;  //normalize gradient step
           s1 *= norm;
           s2 *= norm;
           s3 *= norm;
