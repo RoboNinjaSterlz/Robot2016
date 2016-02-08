@@ -61,6 +61,14 @@ public class Gyro extends Subsystem {
     
     public void calibrate() {
     	//imu.calibrate();
+    	digGyro.calibrate();
+    }
+    
+    public double getAngle() {
+    	return digGyro.getAngle();
+    }
+    
+    public void reset() {
     	digGyro.reset();
     }
     public void initDefaultCommand() {
