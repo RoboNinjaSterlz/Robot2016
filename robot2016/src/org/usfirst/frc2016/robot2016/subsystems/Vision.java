@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj.tables.ITable;
 /**
  *
  */
-public class vision extends Subsystem {
+public class Vision extends Subsystem {
 	private ITable contourTable = NetworkTable.getTable("GRIP/ContoursReport");
 	private ITable lineTable = NetworkTable.getTable("GRIP/myLinesReport");
 	
