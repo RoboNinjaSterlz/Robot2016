@@ -225,6 +225,7 @@ public void doCalibrate() {
 		SmartDashboard.putNumber("ShootLift Desired Pos", lift.getSetpoint());
 		SmartDashboard.putNumber("Shaft Position", getPosition());
 		SmartDashboard.putNumber("Position Error", getPositionError());
+		SmartDashboard.putBoolean("Compressor Ready", compressor.getPressureSwitchValue());
 //		SmartDashboard.putBoolean("limit sensor", shooterLowerLimit.get());
 	}
     
