@@ -129,7 +129,7 @@ public class Vision extends Subsystem {
     		SmartDashboard.putNumber("Height 3", 0);
     		SmartDashboard.putNumber("Width 3", 0);
     	}
-    	if (centerXs.length > 2) {
+    	if (centerXs.length > 3) {
     		SmartDashboard.putNumber("Center X 4", centerXs[3]);
     		SmartDashboard.putNumber("Center Y 4", centerYs[3]);
     		SmartDashboard.putNumber("Height 4", heights[3]);
