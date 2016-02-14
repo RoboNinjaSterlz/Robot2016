@@ -92,7 +92,7 @@ public class Vision extends Subsystem {
 		lineLengths = lineTable.getNumberArray("length",defaultValue);
 		lineX1 = lineTable.getNumberArray("x1",defaultValue);
 		lineX2 = lineTable.getNumberArray("x2",defaultValue);
-		lineY1 = lineTable.getNumberArray("y1",defaultValue);
+		lineY2 = lineTable.getNumberArray("y2",defaultValue);
 		lineAngle = lineTable.getNumberArray("angle",defaultValue);
 	}
 
@@ -217,14 +217,14 @@ public class Vision extends Subsystem {
 		}
 	}
 
-	public void isolateLine(){
+	public int isolateLine(){
 		loadLines();
 		loadContours();
 			if (findCandidates()) {
 			longIndex = findLongest();
-
+			
 		}
-
+return longIndex;
 	}
 
 }
