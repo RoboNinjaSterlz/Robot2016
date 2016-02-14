@@ -132,6 +132,13 @@ public void doCalibrate() {
     	shootSolenoid.set(true);
     }
     
+    public void push() {
+    	pushSolenoid.set(true);
+    }
+    public void pushOff() {
+    	pushSolenoid.set(false);
+    }
+    
     /*
      *  Retracts the piston (does nothing now since front of piston is disconnected
      *  It is needed to switch the double valve
