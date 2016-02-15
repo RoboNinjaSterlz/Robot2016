@@ -38,7 +38,7 @@ public class Vision extends Subsystem {
 	private double[] lineY1;
 	private double[] lineY2;
 	private double[] lineAngle;
-	private boolean[] candidate;
+	private boolean[] candidate = new boolean[15];
 	private int longIndex;
 	private final int MAX_X_RANGE = 50;
 	private final int MAX_Y_RANGE = 50;
@@ -91,6 +91,7 @@ public class Vision extends Subsystem {
 	public void loadLines() {
 		lineLengths = lineTable.getNumberArray("length",defaultValue);
 		lineX1 = lineTable.getNumberArray("x1",defaultValue);
+		lineY1 = lineTable.getNumberArray("y1",defaultValue);
 		lineX2 = lineTable.getNumberArray("x2",defaultValue);
 		lineY2 = lineTable.getNumberArray("y2",defaultValue);
 		lineAngle = lineTable.getNumberArray("angle",defaultValue);

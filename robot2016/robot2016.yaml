@@ -724,7 +724,7 @@ Children:
         name: Parameters
         validators: null
         value:
-        - !!robotbuilder.data.properties.ParameterDescriptor {name: Angle, type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: Angle, type: int}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Shooter}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
@@ -735,11 +735,11 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: Angle
           parameters:
-          - {name: Angle, type: double, value: '7329'}
+          - {name: Angle, type: int, value: '1'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
-    Name: GoTo45
+    Name: GoTo1
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1062,16 +1062,16 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Vision}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id033 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id033
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: lineFind
   - Children: []
-    Properties: &id037
+    Properties: &id034
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -1080,10 +1080,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Shooter}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id034 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id034
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
@@ -1096,15 +1096,18 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id035 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id035
+        value: []
       Commands: !!robotbuilder.data.properties.ListProperty
-        default: &id040
-        - &id039 !!robotbuilder.data.CommandGroupEntry
+        default: []
+        name: Commands
+        validators: *id032
+        value:
+        - &id036 !!robotbuilder.data.CommandGroupEntry
           command:
-            base: &id038
+            base: &id035
               help: A command specifies an action that the robot can perform.
               name: Command
               properties:
@@ -1118,14 +1121,14 @@ Children:
                 validators: null
                 value: []
               - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id036 []
+                default: &id033 []
                 name: Parameter presets
                 validators: null
-                value: *id036
+                value: *id033
               supports: {}
               type: Command
             name: ShooterPushBall
-            properties: *id037
+            properties: *id034
           hasMatch: true
           order: Sequential
           parameters:
@@ -1136,7 +1139,7 @@ Children:
           previous: null
         - !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id038
+            base: *id035
             name: ApplyVacuum
             properties: *id031
           hasMatch: true
@@ -1146,10 +1149,7 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id039
-        name: Commands
-        validators: *id032
-        value: *id040
+          previous: *id036
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group

@@ -86,7 +86,7 @@ public class OI {
         SmartDashboard.putData("IncrementShooterLift", new IncrementShooterLift());
         SmartDashboard.putData("DecrementShooterLift", new DecrementShooterLift());
         SmartDashboard.putData("CalibrateShooter", new CalibrateShooter());
-        SmartDashboard.putData("GoTo45: Angle", new GoTo45(7329));
+        SmartDashboard.putData("GoTo1: Angle", new GoTo1(1));
         SmartDashboard.putData("GoTo0: Angle", new GoTo0(0));
         SmartDashboard.putData("GoTo90: Angle", new GoTo90(12626));
         SmartDashboard.putData("GoTo75: Angle", new GoTo75(75));

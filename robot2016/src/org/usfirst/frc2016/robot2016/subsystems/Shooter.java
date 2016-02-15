@@ -28,8 +28,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class Shooter extends Subsystem {
 
+public class Shooter extends Subsystem {
 
 	public enum ShooterPosition {
 		down,
@@ -39,7 +39,9 @@ public class Shooter extends Subsystem {
 	}
 	
 	public double PRESET_POSITIONS[];
-
+	public double Angle1;
+	public double Angle2;
+	public double Angle3;
 	// Desired encoder count for positioning the lifter.
 	private double localAngle = 0;
 
@@ -166,7 +168,29 @@ public void doCalibrate() {
 		localAngle = angle;
 		lift.set(angle * countPerDegree);
 		//lift.enableControl();
+    	}
+    public void goToPreset(int position) { 
+    	
+    	switch (position) {
+    	case 0:
+    		goTo(0);
+    		break;
+    	case 1:
+    		goTo(Angle1);
+    		break;
+    	case 2:
+    		goTo(Angle2);
+    		break;
+    	case 3:
+    		goTo(Angle3);
+    		break;
+    	default:
+    		break;
+    	}
+
 	}
+   
+    
 
     public void goTo(ShooterPosition position) {
     	int index;

@@ -32,6 +32,9 @@ public class RobotPrefs {
     // Read the values stored in NV RAM and store them in variables
     void doLoadPrefs() {
 
+        Robot.shooter.Angle1 = prefs.getDouble("ANGLE1", Defaults.ANGLE1);
+        Robot.shooter.Angle2 = prefs.getDouble("ANGLE2", Defaults.ANGLE2);
+        Robot.shooter.Angle3 = prefs.getDouble("ANGLE3", Defaults.ANGLE3);
         Robot.drivetrain.drivetrainVoltageLimit = prefs.getDouble("drivetrainVoltageLimit", Defaults.DRIVETRAIN_VOLTAGE_LIMIT_DEFAULT);
     }
     
@@ -40,11 +43,18 @@ public class RobotPrefs {
     void setupPrefs() {
         //Setup the nv RAM in the CRIO
         prefs = Preferences.getInstance();
+        if (!prefs.containsKey("ANGLE1")) {
+            prefs.putDouble("ANGLE1", Defaults.ANGLE1);
+        }
+        if (!prefs.containsKey("ANGLE2")) {
+        	prefs.putDouble("ANGLE2", Defaults.ANGLE2);
+        }
+        if (!prefs.containsKey("Angle3"))  {	
+        	prefs.putDouble("ANGLE3", Defaults.ANGLE3);
+        }
         if (!prefs.containsKey("drivetrainVoltageLimit")) {
             prefs.putDouble("drivetrainVoltageLimit", Defaults.DRIVETRAIN_VOLTAGE_LIMIT_DEFAULT);
         }
-
-    }
-
-
+        
+	}
 }

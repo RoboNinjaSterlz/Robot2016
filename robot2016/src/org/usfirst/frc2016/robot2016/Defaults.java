@@ -26,4 +26,12 @@ public class Defaults {
     protected static final double AUT_ENCODER_DISTANCE_10FT = 100; //Distance in inches
     protected static final double AUT_RIGHT_Y = -.8;
     protected static final double AUT_LEFT_Y = .8;
+
+    
+// Shooter angle presets
+    protected static final double ANGLE1 = 7329;
+    protected static final double ANGLE2 = 9276;
+    protected static final double ANGLE3 = 12626;
+
 }
+
