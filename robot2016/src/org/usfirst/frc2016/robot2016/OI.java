@@ -111,14 +111,12 @@ public class OI {
     // putting buttons in by hand due to bug in new robotbuilder
         SmartDashboard.putData("shoot fwd", new ShooterForward());        
         SmartDashboard.putData("shooter retract", new ShooterRetract());
-        SmartDashboard.putData("shoot", new Shoot());        
         SmartDashboard.putData("apply vacuum", new ApplyVacuum());
         SmartDashboard.putData("display Contour data", new DisplayCameraResults());        
-        SmartDashboard.putData("incrementLift", new IncrementShooterLift());        
         SmartDashboard.putData("calibrate shooter", new CalibrateShooter());        
-        SmartDashboard.putData("calibrate gyro", new CalGyro());        
+        SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
         
-        SmartDashboard.putData("decrementLift", new DecrementShooterLift());        
+        //SmartDashboard.putData("decrementLift", new DecrementShooterLift());        
     
     }
 
