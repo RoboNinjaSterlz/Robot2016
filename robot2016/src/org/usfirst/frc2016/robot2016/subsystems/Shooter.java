@@ -31,23 +31,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends Subsystem {
 
-	public enum ShooterPosition {
-		down,
-		low,
-		mid,
-		high
-	}
-	
-	public double PRESET_POSITIONS[];
+	public double presetPositions[];
 	public double Angle1;
 	public double Angle2;
 	public double Angle3;
 	// Desired encoder count for positioning the lifter.
-	private double localAngle = 0;
-
-	// multiplier for counts to degrees (not used with lead screw
-	private final double countPerDegree = 1;
-//	private final double countPerDegree = (7*1188)/360;
+	private double desiredPosition = 0;
 
 	// keeps track of when the lift is calibrated
 	private boolean needsCalibrate;
@@ -102,7 +91,7 @@ public void doCalibrate() {
 //	if (lift.isRevLimitSwitchClosed()) {
 	if (!shooterLowerLimit.get()) {
 		lift.set(0); // Turn off output
-		localAngle = 0;
+		desiredPosition = 0;
 //		lift.disable();
 		lift.changeControlMode(TalonControlMode.Position);
 		// reset the encoder
@@ -133,15 +122,6 @@ public void doCalibrate() {
     shootSolenoid.set(true);
     }
     
-    /*
-     *  Retracts the piston (does nothing now since front of piston is disconnected
-     *  It is needed to switch the double valve
-     */
-    public void retract() {
-    	//shootSolenoid.set(DoubleSolenoid.Value.kReverse);
-    }
-
-    // 
     public void push() {
     pushSolenoid.set(true);
     }
@@ -149,7 +129,7 @@ public void doCalibrate() {
     	pushSolenoid.set(false);
     }
 
-    public void off() {
+    public void shootOff() {
     	shootSolenoid.set(false);
     }
     
@@ -165,11 +145,17 @@ public void doCalibrate() {
 
 	// Goes to the encoder count that is passed
     public void goTo(double angle) {
-		localAngle = angle;
-		lift.set(angle * countPerDegree);
+		desiredPosition = angle;
+		lift.set(angle);
 		//lift.enableControl();
     	}
-    public void goToPreset(int position) { 
+    public void goToPreset(int position) {
+    	
+    	if ((position >= 1) && (position <= presetPositions.length)) {
+    		goTo(presetPositions[position-1]);
+      	}
+    }
+/*    public void goToPreset(int position) { 
     	
     	switch (position) {
     	case 0:
@@ -187,47 +173,22 @@ public void doCalibrate() {
     	default:
     		break;
     	}
-
 	}
-   
+*/
     
-
-    public void goTo(ShooterPosition position) {
-    	int index;
-    	switch (position) {
-    	case down:
-    		index = 0;
-    		break;
-    	case low:
-    		index = 1;
-    		break;
-    	case mid:
-    		index = 2;
-    		break;
-    	case high:
-    		index = 3;
-    		break;
-    	default:
-    		index = 0;
-    		break;
-    	}
-
-    	goTo(PRESET_POSITIONS[index]);
-    }
-
 	public void incrementAngle() {
-		localAngle++;
-		goTo(localAngle);
+		desiredPosition++;
+		goTo(desiredPosition);
 	}
 	
 	public void decremntAngle() {
-		localAngle--;
-		goTo(localAngle);
+		desiredPosition--;
+		goTo(desiredPosition);
 	}
 	
 	public void adjustAngle( double adjust) {
-		localAngle+=adjust;
-		goTo(localAngle);
+		desiredPosition+=adjust;
+		goTo(desiredPosition);
 	}	
 	
 	// Returns true of the lift is at the desired position (done moving)
