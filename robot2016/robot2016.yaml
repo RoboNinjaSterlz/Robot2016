@@ -252,22 +252,6 @@ Children:
           value: '0'
       Base: CAN Talon
       Name: Lift
-    - Children: []
-      Properties:
-        Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id005
-          default: Talon
-          name: Type
-          validators: null
-          value: Spark
-        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
-          default: '0'
-          name: Output Channel (PWM)
-          validators: *id007
-          value: '2'
-      Base: Speed Controller
-      Name: RollerIntake
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
@@ -337,6 +321,38 @@ Children:
         value: []
     Base: Subsystem
     Name: ShootElevator
+  - Children:
+    - Children: []
+      Properties:
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id005
+          default: Talon
+          name: Type
+          validators: null
+          value: Spark
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id006
+          default: '0'
+          name: Output Channel (PWM)
+          validators: *id007
+          value: '2'
+      Base: Speed Controller
+      Name: RollerIntake
+    Properties:
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: []
+    Base: Subsystem
+    Name: Intake
   Properties: {}
   Base: Subsystems
   Name: Subsystems
