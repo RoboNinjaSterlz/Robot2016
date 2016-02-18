@@ -48,7 +48,7 @@ public class ShooterRetract extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	waitCounter = 0;	// Reset the timer
-    	Robot.shooter.retract();
+//    	Robot.shooter.retract();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -66,7 +66,7 @@ public class ShooterRetract extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-		Robot.shooter.off();
+//		Robot.shooter.off();
 	}
 
     // Called when another command which requires one or more of the same
