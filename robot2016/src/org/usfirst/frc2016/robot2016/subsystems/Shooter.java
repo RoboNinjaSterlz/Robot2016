@@ -31,10 +31,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends Subsystem {
 
-	public double presetPositions[];
-	public double Angle1;
-	public double Angle2;
-	public double Angle3;
+	public double presetPositions[] = new double[5];
 	// Desired encoder count for positioning the lifter.
 	private double desiredPosition = 0;
 
