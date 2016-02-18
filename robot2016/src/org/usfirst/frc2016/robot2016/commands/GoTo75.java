@@ -39,7 +39,7 @@ public class GoTo75 extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.shooter.goTo(m_Angle);
+    	Robot.shootElevator.goTo(m_Angle);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -48,7 +48,7 @@ public class GoTo75 extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.shooter.isPositioned();
+    	return Robot.shootElevator.isPositioned();
     }
 
     // Called once after isFinished returns true

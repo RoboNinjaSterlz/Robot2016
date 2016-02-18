@@ -49,7 +49,7 @@ public class GoTo0 extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.shooter.isPositioned();
+        return Robot.shootElevator.isPositioned();
     }
 
     // Called once after isFinished returns true

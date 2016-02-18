@@ -44,7 +44,7 @@ public class ManualAim extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.adjustAngle(Robot.oi.operatorJoy.getX() * SCALE);
+    	Robot.shootElevator.adjustAngle(Robot.oi.operatorJoy.getX() * SCALE);
     }
 
     // Make this return true when this Command no longer needs to run execute()

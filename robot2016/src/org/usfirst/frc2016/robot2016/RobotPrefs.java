@@ -33,9 +33,9 @@ public class RobotPrefs {
 	void doLoadPrefs() {
 
 		// Shooter angle presets
-		Robot.shooter.presetPositions[0] = prefs.getDouble("ShooterAngle1", Defaults.SHOOTERANGLE1);
-		Robot.shooter.presetPositions[1] = prefs.getDouble("ShooterAngle2", Defaults.SHOOTERANGLE2);
-		Robot.shooter.presetPositions[2] = prefs.getDouble("ShooterAngle3", Defaults.SHOOTERANGLE3);
+		Robot.shootElevator.presetPositions[0] = prefs.getDouble("ShooterAngle1", Defaults.SHOOTERANGLE1);
+		Robot.shootElevator.presetPositions[1] = prefs.getDouble("ShooterAngle2", Defaults.SHOOTERANGLE2);
+		Robot.shootElevator.presetPositions[2] = prefs.getDouble("ShooterAngle3", Defaults.SHOOTERANGLE3);
 		Robot.scoop.presetPositions[0] = prefs.getDouble("ScooperAngle1", Defaults.SCOOPERANGLE1);
 		Robot.scoop.presetPositions[1] = prefs.getDouble("ScooperAngle2", Defaults.SCOOPERANGLE2);
 		Robot.scoop.presetPositions[2] = prefs.getDouble("ScooperAngle3", Defaults.SCOOPERANGLE3);
