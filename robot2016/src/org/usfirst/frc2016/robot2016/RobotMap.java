@@ -66,7 +66,7 @@ public class RobotMap {
         shooterCompressor = new Compressor(0);
         
         
-        shooterVacuumTalon = new Spark(3);
+        shooterVacuumTalon = new Spark(2);
         LiveWindow.addActuator("Shooter", "VacuumTalon", (Spark) shooterVacuumTalon);
         
         shooterShootSolenoid = new Solenoid(0, 0);
@@ -105,7 +105,7 @@ public class RobotMap {
         shootElevatorShooterLowerLimit = new DigitalInput(4);
         LiveWindow.addSensor("ShootElevator", "ShooterLowerLimit", shootElevatorShooterLowerLimit);
         
-        intakeRollerIntake = new Spark(2);
+        intakeRollerIntake = new Spark(3);
         LiveWindow.addActuator("Intake", "RollerIntake", (Spark) intakeRollerIntake);
         
         hookHookServo = new Servo(9);
