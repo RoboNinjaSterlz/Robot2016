@@ -82,8 +82,8 @@ public class ShootElevator extends Subsystem {
     public void doCalibrate() {
     	// Zero out the encoder by running the trucks backwards
     	// until they reach the optical sensor on the back of the elevator
-//    	if (lift.isRevLimitSwitchClosed()) {
-    	if (!shooterLowerLimit.get()) {
+    	if (lift.isFwdLimitSwitchClosed()) {
+    	//if (!shooterLowerLimit.get()) {
     		lift.set(0); // Turn off output
     		desiredPosition = 0;
 //    		lift.disable();
@@ -97,13 +97,13 @@ public class ShootElevator extends Subsystem {
     		needsCalibrate = false;
     	} else {
     		needsCalibrate = true;
-    		lift.set(.7); // Run back at 85% power
+    		lift.set(.3); // Run back at 85% power
     	}
     }
 
     	// Returns true if the shooter is in the home position
     	public boolean isShooterAtZero() {
-        	return (!shooterLowerLimit.get());
+        	return (lift.isFwdLimitSwitchClosed());
         }
 
     	// Goes to the encoder count that is passed

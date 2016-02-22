@@ -60,8 +60,8 @@ public class Scoop extends Subsystem {
 
     	lift.setProfile(0);
     	lift.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-    	lift.reverseSensor(false);
-    	lift.reverseOutput(true);
+    	lift.reverseSensor(true);
+    	lift.reverseOutput(false);
     	lift.setAllowableClosedLoopErr(0);
     	// Keep off until we are calibrated.
     	// Hard limits should protect everything.
@@ -93,19 +93,19 @@ public class Scoop extends Subsystem {
     		// reset the encoder
     		lift.setPosition(0);
     		lift.set(0);
-    		lift.reverseSensor(false);
-    		lift.reverseOutput(true);
+    		lift.reverseSensor(true);
+    		lift.reverseOutput(false);
     		lift.enable();
     		needsCalibrate = false;
     	} else {
     		needsCalibrate = true;
-    		lift.set(.7); // Run back at 85% power
+    		lift.set(.3); // Run back at 85% power
     	}
     }
     
 	// Returns true if the shooter is in the home position
-	public boolean isShooterAtZero() {
-    	return (lift.isRevLimitSwitchClosed());
+	public boolean isScoopAtZero() {
+    	return (lift.isFwdLimitSwitchClosed());
     }
 
 	// Goes to the encoder count that is passed
