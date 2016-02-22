@@ -36,9 +36,19 @@ public class RobotPrefs {
 		Robot.shootElevator.presetPositions[0] = prefs.getDouble("ShooterAngle1", Defaults.SHOOTERANGLE1);
 		Robot.shootElevator.presetPositions[1] = prefs.getDouble("ShooterAngle2", Defaults.SHOOTERANGLE2);
 		Robot.shootElevator.presetPositions[2] = prefs.getDouble("ShooterAngle3", Defaults.SHOOTERANGLE3);
-		Robot.scoop.presetPositions[0] = prefs.getDouble("ScoopAngle1", Defaults.SCOOPERANGLE1);
-		Robot.scoop.presetPositions[1] = prefs.getDouble("ScoopAngle2", Defaults.SCOOPERANGLE2);
-		Robot.scoop.presetPositions[2] = prefs.getDouble("ScoopAngle3", Defaults.SCOOPERANGLE3);
+
+		Robot.scoop.presetPositions[Robot.scoop.FLOOR] = prefs.getDouble("ScoopAngle1", Defaults.SCOOPER_FLOOR);
+/*
+ * 		Robot.scoop.presetPositions[Robot.scoop.FLOOR] = 
+ *          prefs.getDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.FLOOR], Defaults.SCOOPER_FLOOR);
+ */
+		Robot.scoop.presetPositions[Robot.scoop.CLEAR_SHOOTER] = 
+			prefs.getDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.CLEAR_SHOOTER], Defaults.SCOOPER_CLEAR_OF_SHOOTER);
+		Robot.scoop.presetPositions[Robot.scoop.CLEAR_LOW_BAR] = 
+			prefs.getDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.CLEAR_LOW_BAR], Defaults.SCOOPER_LOW_BAR);
+		Robot.scoop.presetPositions[Robot.scoop.SHOOT] = 
+			prefs.getDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.SHOOT], Defaults.SCOOPER_SHOOT);
+
 		Robot.drivetrain.drivetrainVoltageLimit = prefs.getDouble("drivetrainVoltageLimit", Defaults.DRIVETRAIN_VOLTAGE_LIMIT_DEFAULT);
 	}
 
@@ -58,17 +68,25 @@ public class RobotPrefs {
 		if (!prefs.containsKey("ShooterAngle3"))  {	
 			prefs.putDouble("ShooterAngle3", Defaults.SHOOTERANGLE3);
 		}
+
 		if (!prefs.containsKey("drivetrainVoltageLimit")) {
 			prefs.putDouble("drivetrainVoltageLimit", Defaults.DRIVETRAIN_VOLTAGE_LIMIT_DEFAULT);
 		}
+
 		if (!prefs.containsKey("ScoopAngle1")) {
-			prefs.putDouble("ScoopAngle1", Defaults.SCOOPERANGLE1);
+			prefs.putDouble("ScoopAngle1", Defaults.SCOOPER_FLOOR);
 		}
-		if (!prefs.containsKey("ScoopAngle2")) {
-			prefs.putDouble("ScoopAngle2", Defaults.SCOOPERANGLE2);
+		if (!prefs.containsKey("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.FLOOR])) {
+			prefs.putDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.FLOOR], Defaults.SCOOPER_FLOOR);
 		}
-		if (!prefs.containsKey("ScoopAngle3"))  {	
-			prefs.putDouble("ScoopAngle3", Defaults.SCOOPERANGLE3);
+		if (!prefs.containsKey("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.CLEAR_SHOOTER])) {
+			prefs.putDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.CLEAR_SHOOTER], Defaults.SCOOPER_CLEAR_OF_SHOOTER);
+		}
+		if (!prefs.containsKey("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.CLEAR_LOW_BAR]))  {	
+			prefs.putDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.CLEAR_LOW_BAR], Defaults.SCOOPER_LOW_BAR);
+		}
+		if (!prefs.containsKey("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.SHOOT]))  {	
+			prefs.putDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.SHOOT], Defaults.SCOOPER_SHOOT);
 		}
 
 	}

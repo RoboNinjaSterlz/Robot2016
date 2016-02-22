@@ -163,6 +163,10 @@ public class ShootElevator extends Subsystem {
     	public boolean isCalibrated(){
     		return !needsCalibrate;
     	}
+    	
+    	public boolean safeToHomeScoop() {
+    		return (isShooterAtZero() || (getPosition() > presetPositions[LOW]));
+    	}
         
     	// mostly for deugging updates the smart dashboard with position info
     	public void periodic() {

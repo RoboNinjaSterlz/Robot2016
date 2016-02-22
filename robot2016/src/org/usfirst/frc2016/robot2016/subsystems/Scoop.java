@@ -43,14 +43,14 @@ public class Scoop extends Subsystem {
 	
 	// Labels for presets in robot prefs on dashboard
 	public final String[] ScoopPositionLables = { 
-		"Ground",
+		"Floor",
 		"ClearLowBar",
 		"Shoot",
 		"ClearShooter"
 	};
 	
 	public final int
-		GROUND = 0,
+		FLOOR = 0,
 		CLEAR_LOW_BAR = 1,
 		SHOOT = 2,
 		CLEAR_SHOOTER = 3;
@@ -159,15 +159,11 @@ public class Scoop extends Subsystem {
 		return !needsCalibrate;
 	}
 	
-	//Returns true if it's safe to move the shooter
+	// Returns true if the scoop is out enough for the elevator to pass behind
 	public boolean safeToMoveShooter() {
 		return (getPosition() < presetPositions[CLEAR_SHOOTER]-AbsoluteTolerance);
 	}
     
-	// Returns true if the scoop is out enough for the elevator to pass behind
-	public boolean isScoopClearOfShooter() {
-		return (false);
-	}
 	// mostly for deugging updates the smart dashboard with position info
 	public void periodic() {
 		SmartDashboard.putNumber("ScoopLift Desired Pos", lift.getSetpoint());
