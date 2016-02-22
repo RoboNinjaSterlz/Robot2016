@@ -85,7 +85,7 @@ public class Scoop extends Subsystem {
     public void doCalibrate() {
     	// Zero out the encoder by running the trucks backwards
     	// until they reach the optical sensor on the back of the elevator
-    	if (lift.isRevLimitSwitchClosed()) {
+    	if (lift.isFwdLimitSwitchClosed()) {
     		lift.set(0); // Turn off output
     		desiredPosition = 0;
 //    		lift.disable();
