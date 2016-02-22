@@ -227,7 +227,7 @@ public class Robot extends IterativeRobot {
     	 */
     	
     	if (!robotIsCalibrated){
-    		if (scoop.safeToMoveShooter()) {
+    		if (scoop.isScoopInSafeZone()) {
     			if (!shootElevator.isCalibrated() ){
 //    				shootElevator.doCalibrate();
     			}
