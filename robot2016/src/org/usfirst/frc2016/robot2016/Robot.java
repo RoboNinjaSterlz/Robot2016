@@ -227,16 +227,58 @@ public class Robot extends IterativeRobot {
     	 */
     	
     	if (!robotIsCalibrated){
-    		if (scoop.isScoopInSafeZone()) {
-    			if (!shootElevator.isCalibrated() ){
-//    				shootElevator.doCalibrate();
-    			}
+    		// Perform quick check in case everyone is home
+    		if (scoop.isScoopAtHome() && shootElevator.isShooterAtHome()) {
+    			// Need to make the calls to switch mode to position
+    			shootElevator.doCalibrate();
+				scoop.doCalibrate();
+				robotIsCalibrated = true;
+				// Calibration done
+				return;
     		}
+    		// Next simple case is elevator is at home doesn't matter where
+    		// scoop is
+    		if (!shootElevator.isCalibrated() && shootElevator.isShooterAtHome()) {
+    			// Call to set to position mode and get is cal set
+    			shootElevator.doCalibrate();
+    		}
+    		
+    		/*
+    		 *  Now it gets complicated we need to do something with the scoop
+    		 *  before we can safely move the shooter
+    		 *  Two possibilities exist
+    		 *  1. Scoop is out enough to cal the shooter
+    		 *  2. Shooter is in the way.
+    		 *  
+    		 *  For case to just move the scoop to the safe zone and it will become
+    		 *  case 1.
+    		 *  There isn't much advantage to doing the scoop first since at the end
+    		 *  it will need to be in the home position. This will just add another step that
+    		 *  calibrate will fix.
+    		 */
+    		// Case 1 scoop is clear of the shooter
+    		if (!shootElevator.isCalibrated() && scoop.getSafeZoneFlag() ){
+    			// Call to set to position mode and get is cal set
+//    				shootElevator.doCalibrate();
+   			}
+
+    		/* Case 2 scoop is in the way
+    		 * Note using the flag of safe zone so we don't detect
+    		 * transition before moveToSafeZone does and never call to stop the motor.
+    		 */
+    		if (!shootElevator.isCalibrated() && !scoop.getSafeZoneFlag() ){
+    			// This will be called every 20 ms until we get into case 1 above
+    			scoop.moveToSafeZone();
+    		}
+    		
+    		// By now the shoot elevator should be at home and we can finally do the scoop
     		if (shootElevator.isCalibrated()) {
     			if (!scoop.isCalibrated() ){
     				scoop.doCalibrate();
     			}
     			else {
+    				// May never get here since the first if may handle this
+    				// depends on timing.
     				robotIsCalibrated = true;
     			}
     		}
@@ -245,7 +287,9 @@ public class Robot extends IterativeRobot {
     
     private void updateDashboard() {
     	SmartDashboard.putBoolean("Shooter Calibrated", shootElevator.isCalibrated());
-        SmartDashboard.putBoolean("Shooter At Zero", shootElevator.isShooterAtZero());
-    	
+        SmartDashboard.putBoolean("Shooter At Zero", shootElevator.isShooterAtHome());
+    	SmartDashboard.putBoolean("Shoop Calibrated", scoop.isCalibrated());
+        SmartDashboard.putBoolean("Shooter At Zero", scoop.isScoopAtHome());
+    	SmartDashboard.putBoolean("Robot Calibrated",robotIsCalibrated);
     }
 }

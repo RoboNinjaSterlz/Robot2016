@@ -37,7 +37,8 @@ public class CheckScoopClearance extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (!Robot.scoop.safeToMoveShooter()) {
+//    	if (!Robot.scoop.safeToMoveShooter()) {
+     	if (!Robot.scoop.isScoopInSafeZone()) {
     		Robot.scoop.goToPreset(Robot.scoop.CLEAR_SHOOTER);
     	}
     }
