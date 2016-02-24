@@ -138,6 +138,9 @@ public class ShootElevator extends Subsystem {
     	
     	public void adjustAngle( double adjust) {
     		desiredPosition+=adjust;
+    		if (desiredPosition < 0) {
+    			desiredPosition = 0;
+    		}
     		goTo(desiredPosition);
     	}	
     	

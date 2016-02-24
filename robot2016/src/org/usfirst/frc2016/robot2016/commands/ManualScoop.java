@@ -43,7 +43,9 @@ public class ManualScoop extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.scoop.adjustAngle(Robot.oi.operatorJoy.getX() * SCALE);
+    	int adjust;
+    	adjust = (int) (Robot.oi.operatorJoy.getY() * SCALE); 
+    	Robot.scoop.adjustAngle(adjust);
     }
 
     // Make this return true when this Command no longer needs to run execute()
