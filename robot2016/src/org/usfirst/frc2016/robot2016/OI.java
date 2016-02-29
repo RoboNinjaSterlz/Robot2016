@@ -56,9 +56,9 @@ public class OI {
     public Joystick driveLeft;
     public Joystick driveRight;
     public JoystickButton shooterHomeButton;
-    public JoystickButton shootPreset1Button;
-    public JoystickButton shootPreset2Button;
-    public JoystickButton shootPreset3Button;
+    public JoystickButton shootPresetLowButton;
+    public JoystickButton shootPresetMedButton;
+    public JoystickButton shootPresetHighButton;
     public JoystickButton shootOperatorButton;
     public JoystickButton scoop2Floor;
     public JoystickButton scoop2Home;
@@ -72,21 +72,21 @@ public class OI {
 
         operatorJoy = new Joystick(2);
         
-        lowGoalButton = new JoystickButton(operatorJoy, 4);
+        lowGoalButton = new JoystickButton(operatorJoy, 2);
         lowGoalButton.whenPressed(new CompDoLowGoal());
-        scoop2Home = new JoystickButton(operatorJoy, 3);
+        scoop2Home = new JoystickButton(operatorJoy, 5);
         scoop2Home.whenPressed(new ScoopHome());
-        scoop2Floor = new JoystickButton(operatorJoy, 5);
+        scoop2Floor = new JoystickButton(operatorJoy, 3);
         scoop2Floor.whenPressed(new ScoopToFloor());
         shootOperatorButton = new JoystickButton(operatorJoy, 1);
         shootOperatorButton.whenPressed(new Shoot());
-        shootPreset3Button = new JoystickButton(operatorJoy, 10);
-        shootPreset3Button.whenPressed(new ShooterPreset3());
-        shootPreset2Button = new JoystickButton(operatorJoy, 9);
-        shootPreset2Button.whenPressed(new ShooterPreset2());
-        shootPreset1Button = new JoystickButton(operatorJoy, 8);
-        shootPreset1Button.whenPressed(new ShooterPreset1());
-        shooterHomeButton = new JoystickButton(operatorJoy, 7);
+        shootPresetHighButton = new JoystickButton(operatorJoy, 11);
+        shootPresetHighButton.whenPressed(new ShooterPreset3());
+        shootPresetMedButton = new JoystickButton(operatorJoy, 9);
+        shootPresetMedButton.whenPressed(new ShooterPreset2());
+        shootPresetLowButton = new JoystickButton(operatorJoy, 7);
+        shootPresetLowButton.whenPressed(new ShooterPreset1());
+        shooterHomeButton = new JoystickButton(operatorJoy, 8);
         shooterHomeButton.whenPressed(new Shooter2Home());
         driveRight = new Joystick(1);
         
@@ -97,44 +97,22 @@ public class OI {
 
 
         // SmartDashboard Buttons
-        SmartDashboard.putData("ApplyVacuum", new ApplyVacuum());
-        SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-        SmartDashboard.putData("Shoot", new Shoot());
-        SmartDashboard.putData("TankDrive", new TankDrive());
-        SmartDashboard.putData("CalibrateShooter", new CalibrateShooter());
-        SmartDashboard.putData("Shooter2Home", new Shooter2Home());
         SmartDashboard.putData("CalGyro", new CalGyro());
-        SmartDashboard.putData("ResetGyro", new ResetGyro());
-        SmartDashboard.putData("ManualAim", new ManualAim());
-        SmartDashboard.putData("AutoMote", new AutoMote());
-        SmartDashboard.putData("AutoSallyPort", new AutoSallyPort());
-        SmartDashboard.putData("AutoLowBar", new AutoLowBar());
-        SmartDashboard.putData("AutoPortcullis", new AutoPortcullis());
-        SmartDashboard.putData("AutoRamparts", new AutoRamparts());
-        SmartDashboard.putData("AutoDrawbridge", new AutoDrawbridge());
-        SmartDashboard.putData("AutoRoughTerrain", new AutoRoughTerrain());
-        SmartDashboard.putData("AutoRockWall", new AutoRockWall());
-        SmartDashboard.putData("AutoChevaldeFrise", new AutoChevaldeFrise());
-        SmartDashboard.putData("lineFind", new lineFind());
-        SmartDashboard.putData("ShooterPushBall", new ShooterPushBall());
-        SmartDashboard.putData("PushBall", new PushBall());
+        SmartDashboard.putData("CalibrateShooter", new CalibrateShooter());
+        SmartDashboard.putData("CheckScoopClearance", new CheckScoopClearance());
+        SmartDashboard.putData("CompScoopHome", new CompScoopHome());
+        SmartDashboard.putData("CompDoLowGoal", new CompDoLowGoal());
+        SmartDashboard.putData("CompShootHome", new CompShootHome());
         SmartDashboard.putData("HookReset", new HookReset());
         SmartDashboard.putData("HookDeploy", new HookDeploy());
-        SmartDashboard.putData("ShooterPreset1", new ShooterPreset1());
-        SmartDashboard.putData("ShooterPreset2", new ShooterPreset2());
-        SmartDashboard.putData("ShooterPreset3", new ShooterPreset3());
-        SmartDashboard.putData("ScoopHome", new ScoopHome());
-        SmartDashboard.putData("ScoopToFloor", new ScoopToFloor());
+        SmartDashboard.putData("lineFind", new lineFind());
+        SmartDashboard.putData("ManualAim", new ManualAim());
         SmartDashboard.putData("ManualScoop", new ManualScoop());
-        SmartDashboard.putData("RollerPOV", new RollerPOV());
+        SmartDashboard.putData("ResetGyro", new ResetGyro());
         SmartDashboard.putData("ScoopToClearOfShooter", new ScoopToClearOfShooter());
         SmartDashboard.putData("ScoopToShoot", new ScoopToShoot());
         SmartDashboard.putData("ScoopToClearLowBar", new ScoopToClearLowBar());
-        SmartDashboard.putData("CompScoopHome", new CompScoopHome());
-        SmartDashboard.putData("CheckScoopClearance", new CheckScoopClearance());
-        SmartDashboard.putData("CheckShooterClearence", new CheckShooterClearence());
-        SmartDashboard.putData("CompShootHome", new CompShootHome());
-        SmartDashboard.putData("CompDoLowGoal", new CompDoLowGoal());
+        SmartDashboard.putData("TankDrive", new TankDrive());
 
     // END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS
 

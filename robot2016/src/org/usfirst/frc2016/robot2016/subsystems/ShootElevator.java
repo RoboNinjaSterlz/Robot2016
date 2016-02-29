@@ -38,7 +38,7 @@ public class ShootElevator extends Subsystem {
 	private final double AbsoluteTolerance = 0;
 	
 	// Labels for presets in robot prefs on dashboard
-	public final String[] ScoopPositionLables = { 
+	public final String[] ShootPositionLables = { 
 		"Low",
 		"Medium",
 		"High"
