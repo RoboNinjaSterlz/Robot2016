@@ -53,8 +53,8 @@ public class RobotMap {
     public static Encoder drivetrainLeftEncoder;
     public static Encoder drivetrainRightEncoder;
     public static CANTalon scoopLift;
+    public static DigitalInput scoopSafeZoneDetector;
     public static CANTalon shootElevatorLift;
-    public static DigitalInput shootElevatorShooterLowerLimit;
     public static SpeedController intakeRollerIntake;
     public static Servo hookHookServo;
     public static Servo liftLiftServo;
@@ -99,11 +99,11 @@ public class RobotMap {
         scoopLift = new CANTalon(0);
         LiveWindow.addActuator("Scoop", "Lift", scoopLift);
         
+        scoopSafeZoneDetector = new DigitalInput(4);
+        LiveWindow.addSensor("Scoop", "SafeZoneDetector", scoopSafeZoneDetector);
+        
         shootElevatorLift = new CANTalon(1);
         LiveWindow.addActuator("ShootElevator", "Lift", shootElevatorLift);
-        
-        shootElevatorShooterLowerLimit = new DigitalInput(4);
-        LiveWindow.addSensor("ShootElevator", "ShooterLowerLimit", shootElevatorShooterLowerLimit);
         
         intakeRollerIntake = new Spark(3);
         LiveWindow.addActuator("Intake", "RollerIntake", (Spark) intakeRollerIntake);

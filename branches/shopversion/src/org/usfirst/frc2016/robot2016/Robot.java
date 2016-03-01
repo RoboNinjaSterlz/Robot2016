@@ -173,17 +173,21 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	robotPrefs.periodic();
     	SmartDashboard.putBoolean("IS Calibrated", shootElevator.isCalibrated());
-//    	if (!shootElevator.isCalibrated() ){
-//    		shootElevator.doCalibrate();
+//    	if (!scoop.isCalibrated() ){
+//    		scoop.doCalibrate();
+//    	} else {
+//        	if (!shootElevator.isCalibrated() ){
+//        		shootElevator.doCalibrate();
+//        	}
+    		
 //    	}
-    	if (!scoop.isCalibrated() ){
-    		scoop.doCalibrate();
-    	}
     	Scheduler.getInstance().run();
         shootElevator.periodic();
         scoop.periodic();
         gyro.periodic();
         SmartDashboard.putBoolean("Shooter At Zero", shootElevator.isShooterAtZero());
+        SmartDashboard.putBoolean("Scoop At Zero", scoop.isScoopAtZero());
+        SmartDashboard.putBoolean("Scoop In Safe Zone", scoop.isInSafeZone());
     }
 
     /**
