@@ -97,6 +97,7 @@ public class OI {
 
 
         // SmartDashboard Buttons
+        SmartDashboard.putData("ArcadeDrive: Stop", new ArcadeDrive(0, 0));
         SmartDashboard.putData("CalGyro", new CalGyro());
         SmartDashboard.putData("CalibrateShooter", new CalibrateShooter());
         SmartDashboard.putData("CheckScoopClearance", new CheckScoopClearance());
@@ -130,7 +131,7 @@ public class OI {
         //SmartDashboard.putData("apply vacuum", new ApplyVacuum());
         SmartDashboard.putData("display Contour data", new DisplayCameraResults());        
         //SmartDashboard.putData("calibrate shooter", new CalibrateShooter());        
-        SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
+        SmartDashboard.putData("ArcadeDrive", new ArcadeDrive(0,0));
         
         //SmartDashboard.putData("decrementLift", new DecrementShooterLift());        
     
