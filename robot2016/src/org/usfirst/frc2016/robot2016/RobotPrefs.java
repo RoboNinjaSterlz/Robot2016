@@ -49,7 +49,14 @@ public class RobotPrefs {
 		Robot.scoop.presetPositions[Robot.scoop.SHOOT] = 
 			prefs.getDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.SHOOT], Defaults.SCOOPER_SHOOT);
 
+		/*
+		 * After setting the value, setMax must be called
+		 * Unlike the other prefs, drivetrain does not use the limit in every cycle
+		 * instead, it is set once by robotbuilder generated code.
+		 *  The call to setMax will update the limit.
+		 */
 		Robot.drivetrain.drivetrainVoltageLimit = prefs.getDouble("drivetrainVoltageLimit", Defaults.DRIVETRAIN_VOLTAGE_LIMIT_DEFAULT);
+        Robot.drivetrain.setMax();
 	}
 
 
