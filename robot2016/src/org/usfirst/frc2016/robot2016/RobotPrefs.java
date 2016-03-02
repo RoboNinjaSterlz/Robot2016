@@ -36,9 +36,9 @@ public class RobotPrefs {
 		Robot.shootElevator.presetPositions[Robot.shootElevator.LOW] = 
 			prefs.getDouble("Shooter "+Robot.shootElevator.ShootPositionLables[Robot.shootElevator.LOW], Defaults.SHOOTERANGLE1);
 		Robot.shootElevator.presetPositions[Robot.shootElevator.MEDIUM] = 
-			prefs.getDouble("Shooter"+Robot.shootElevator.ShootPositionLables[Robot.shootElevator.MEDIUM], Defaults.SHOOTERANGLE2);
+			prefs.getDouble("Shooter "+Robot.shootElevator.ShootPositionLables[Robot.shootElevator.MEDIUM], Defaults.SHOOTERANGLE2);
 		Robot.shootElevator.presetPositions[Robot.shootElevator.HIGH] = 
-			prefs.getDouble("Shooter"+Robot.shootElevator.ShootPositionLables[Robot.shootElevator.HIGH], Defaults.SHOOTERANGLE3);
+			prefs.getDouble("Shooter "+Robot.shootElevator.ShootPositionLables[Robot.shootElevator.HIGH], Defaults.SHOOTERANGLE3);
 
   		Robot.scoop.presetPositions[Robot.scoop.FLOOR] = 
            prefs.getDouble("Scoop "+Robot.scoop.ScoopPositionLables[Robot.scoop.FLOOR], Defaults.SCOOPER_FLOOR);

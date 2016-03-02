@@ -259,7 +259,7 @@ public class Robot extends IterativeRobot {
     		// Case 1 scoop is clear of the shooter
     		if (!shootElevator.isCalibrated() && scoop.getSafeZoneFlag() ){
     			// Call to set to position mode and get is cal set
-//    				shootElevator.doCalibrate();
+    				shootElevator.doCalibrate();
    			}
 
     		/* Case 2 scoop is in the way
@@ -273,6 +273,7 @@ public class Robot extends IterativeRobot {
     		
     		// By now the shoot elevator should be at home and we can finally do the scoop
     		if (shootElevator.isCalibrated()) {
+   
     			if (!scoop.isCalibrated() ){
     				scoop.doCalibrate();
     			}
@@ -291,5 +292,6 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putBoolean("Shoop Calibrated", scoop.isCalibrated());
         SmartDashboard.putBoolean("Shooter At Zero", scoop.isScoopAtHome());
     	SmartDashboard.putBoolean("Robot Calibrated",robotIsCalibrated);
-    }
+    	SmartDashboard.putBoolean("Scoop in safe Zone", scoop.isScoopInSafeZone());
+    	}
 }

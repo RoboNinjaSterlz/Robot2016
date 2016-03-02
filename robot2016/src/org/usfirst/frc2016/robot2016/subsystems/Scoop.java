@@ -135,8 +135,8 @@ public class Scoop extends Subsystem {
    	}
 
     public void goToPreset(int position) {
-       	if ((position >= 1) && (position <= presetPositions.length)) {
-    		goTo(presetPositions[position-1]);
+       	if ((position >= 0) && (position <= presetPositions.length-1)) {
+    		goTo(presetPositions[position]);
       	}
     }
 
