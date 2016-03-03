@@ -52,7 +52,7 @@ public class DelaySeconds extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (waitCounter >= (m_seconds/DELAYPERCOUNT)) {
+        if (waitCounter >= (int)(m_seconds/DELAYPERCOUNT)) {
     		return true;
     	}
         return false;

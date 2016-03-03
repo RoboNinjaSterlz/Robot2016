@@ -77,8 +77,13 @@ public class Gyro extends Subsystem {
     }
     
     public double getAngle() {
+    	double angle;
     	//turn digGyro.getAngle();
-    	return navxGyro.getAngle();
+    	angle = navxGyro.getAngle();
+    	if (angle > 180) {
+    		angle = angle-360;
+    	}
+    	return angle;
     }
     
     public void reset() {
