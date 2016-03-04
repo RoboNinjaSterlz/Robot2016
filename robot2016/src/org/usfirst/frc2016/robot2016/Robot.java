@@ -79,7 +79,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	RobotMap.init();
-    	robotIsCalibrated = false; //!!!!!!!!!!!!
+    	robotIsCalibrated = true; //!!!!!!!!!!!!
     	robotPrefs = new RobotPrefs();
     	
     	/*
