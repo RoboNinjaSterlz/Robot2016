@@ -79,7 +79,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	RobotMap.init();
-    	robotIsCalibrated = true; //!!!!!!!!!!!!
+    	robotIsCalibrated = false; //!!!!!!!!!!!!
     	robotPrefs = new RobotPrefs();
     	
     	/*
@@ -119,7 +119,7 @@ public class Robot extends IterativeRobot {
         // Set up defense choices
         defenseChooser = new SendableChooser();
         defenseChooser.addDefault("Low Bar Auto",  new AutoLowBar());
-        defenseChooser.addObject("Moat Auto", new AutoMoat());
+        defenseChooser.addObject("Moat Auto", new AutoMote());
         defenseChooser.addObject("Ramparts Auto", new AutoRamparts());
         defenseChooser.addObject("Rock Wall Auto", new AutoRockWall());
         defenseChooser.addObject("Rough Terrain Auto", new AutoRoughTerrain());
