@@ -26,7 +26,11 @@ import edu.wpi.first.wpilibj.SPI;
  *
  */
 public class Gyro extends Subsystem {
-    //ADIS16448_IMU imu;
+	
+	public final double gyroP = 0.08;
+	public final double TURN_MAX = 0.6;
+
+	//ADIS16448_IMU imu;
 	//XRS450_Gyro digGyro;
 	AHRS navxGyro;
 	
@@ -76,6 +80,7 @@ public class Gyro extends Subsystem {
     	// NavX doesn't appear to have a calibrate
     }
     
+/*
     public double getAngle() {
     	double angle;
     	//turn digGyro.getAngle();
@@ -85,7 +90,18 @@ public class Gyro extends Subsystem {
     	}
     	return angle;
     }
+ */
     
+    public double getAngle() {
+    	double angle;
+    	//turn digGyro.getAngle();
+    	angle = navxGyro.getAngle();
+//    	if (angle > 180) {
+//    		angle = angle-360;
+//    	}
+    	return angle;
+    }
+
     public void reset() {
     	//gGyro.reset();
     	navxGyro.zeroYaw();
