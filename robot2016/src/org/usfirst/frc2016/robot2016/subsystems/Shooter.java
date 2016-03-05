@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2016.robot2016.subsystems;
 
+import org.usfirst.frc2016.robot2016.Robot;
 import org.usfirst.frc2016.robot2016.RobotMap;
 import org.usfirst.frc2016.robot2016.commands.*;
 
@@ -47,7 +48,9 @@ public class Shooter extends Subsystem {
 
     // Drives the piston forward (shooting)
     public void shoot() {
-    shootSolenoid.set(true);
+//  	if (Robot.scoop.isScoopInSafeZone()) {
+    		shootSolenoid.set(true);
+//    	}
     }
     
     public void push() {
