@@ -29,13 +29,13 @@ public class Defaults {
 
     
 // Shooter angle presets
-    protected static final double SHOOTERANGLE1 = 2410/3;
-    protected static final double SHOOTERANGLE2 = 3092/3;
-    protected static final double SHOOTERANGLE3 = 4208/3;
+    protected static final double SHOOTERANGLE1 = 2409;
+    protected static final double SHOOTERANGLE2 = 5000;
+    protected static final double SHOOTERANGLE3 = 6100;
 
-    protected static final double SCOOPER_FLOOR = 3500;
-    protected static final double SCOOPER_CLEAR_OF_SHOOTER = 600;
-    protected static final double SCOOPER_LOW_BAR = 3000;
-    protected static final double SCOOPER_SHOOT = 3000;
+    protected static final double SCOOPER_FLOOR = -3190;
+    protected static final double SCOOPER_CLEAR_OF_SHOOTER = -650;
+    protected static final double SCOOPER_LOW_BAR = -2960;
+    protected static final double SCOOPER_SHOOT = -2500;
 }
 

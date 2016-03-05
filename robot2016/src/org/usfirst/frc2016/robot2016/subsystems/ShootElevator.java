@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2016.robot2016.subsystems;
 
+import org.usfirst.frc2016.robot2016.Robot;
 import org.usfirst.frc2016.robot2016.RobotMap;
 import org.usfirst.frc2016.robot2016.commands.*;
 
@@ -117,7 +118,9 @@ public class ShootElevator extends Subsystem {
     	// Goes to the encoder count that is passed
         public void goTo(double angle) {
     		desiredPosition = angle;
-    		lift.set(angle);
+    		if (Robot.robotIsCalibrated) {
+    			lift.set(angle);
+    		}
     		//lift.enableControl();
         	}
         public void goToPreset(int position) {

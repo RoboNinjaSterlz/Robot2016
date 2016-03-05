@@ -13,7 +13,7 @@ package org.usfirst.frc2016.robot2016.subsystems;
 
 import org.usfirst.frc2016.robot2016.RobotMap;
 import org.usfirst.frc2016.robot2016.commands.*;
-
+import org.usfirst.frc2016.robot2016.Robot;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
@@ -131,7 +131,9 @@ public class Scoop extends Subsystem {
 	// Goes to the encoder count that is passed
     public void goTo(double angle) {
 		desiredPosition = angle;
-		lift.set(desiredPosition);
+		if (Robot.robotIsCalibrated) {
+			lift.set(desiredPosition);
+		}
    	}
 
     public void goToPreset(int position) {
