@@ -37,7 +37,7 @@ public class Scoop extends Subsystem {
 	private boolean inSafeZoneFlag = false;
 
 	// How good does the position need to be
-	private final double AbsoluteTolerance = 0;
+	private final double AbsoluteTolerance = 10;
 
 	// Where we want the lift to be
 	private double desiredPosition;
