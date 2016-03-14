@@ -168,7 +168,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         
     	startingPosition = (int) positionChooser.getSelected();
-    	SmartDashboard.putNumber("Starting Position", startingPosition);
+    	//SmartDashboard.putNumber("Starting Position", startingPosition);
 
         autonomousCommand = (Command) defenseChooser.getSelected();
         // schedule the autonomous command (example)

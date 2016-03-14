@@ -122,8 +122,6 @@ public class OI {
         SmartDashboard.putData("CompShooterMedium", new CompShooterMedium());
         SmartDashboard.putData("CompShooterHigh", new CompShooterHigh());
         SmartDashboard.putData("CalibrateScoop", new CalibrateScoop());
-        SmartDashboard.putData("DeployHook", new DeployHook());
-        SmartDashboard.putData("ResetHook", new ResetHook());
         SmartDashboard.putData("LiftLatchRelease", new LiftLatchRelease());
         SmartDashboard.putData("ResetLift", new ResetLift());
         SmartDashboard.putData("CompDelpoyLift", new CompDelpoyLift());
