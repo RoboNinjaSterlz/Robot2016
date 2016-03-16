@@ -38,7 +38,9 @@ public class LiftLatchRelease extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.liftRelease.deploy();
+    	if ( Robot.hook.isDeployed()) {
+    		Robot.liftRelease.deploy();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

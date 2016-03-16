@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Hook extends Subsystem {
+	private boolean deployed;
 	private double desiredposition;
 	private final double DEPLOY_POSITION = .715;
 	private final double HOME_POSITION = .515;
@@ -43,15 +44,20 @@ public class Hook extends Subsystem {
     }
     public void deploy() {
     desiredposition = DEPLOY_POSITION;
-    	hookServo.set(desiredposition);	
-    	
-    	
+    	hookServo.set(desiredposition);
+    	deployed = true;
     }	
+    
     public void reset() {
     	desiredposition = HOME_POSITION;
-    	hookServo.set(desiredposition);	
-    	
+    	hookServo.set(desiredposition);
+    	deployed = false;
     }
+    
+    public boolean isDeployed() {
+    	return deployed;
+    }
+    
     public boolean ispositioned() {
     return (desiredposition == hookServo.get());	
     	
