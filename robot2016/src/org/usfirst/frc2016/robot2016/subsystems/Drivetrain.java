@@ -15,6 +15,7 @@ import org.usfirst.frc2016.robot2016.RobotMap;
 import org.usfirst.frc2016.robot2016.commands.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -69,12 +70,13 @@ public class Drivetrain extends Subsystem {
     }
     
     public void tankDrive(Joystick leftJoy, Joystick rightJoy) {
-    	double rightY= adjustDriveValue(leftJoy.getY());
+    	double rightY= adjustDriveValue(rightJoy.getY());
     	double leftY = adjustDriveValue(leftJoy.getY());
         // The values to pass to the motors are adjusted by the ramp method
         leftCurrentSpeed = returnRamp(leftCurrentSpeed, leftY);
         rightCurrentSpeed = returnRamp(rightCurrentSpeed, rightY);
-
+//        SmartDashboard.putNumber("LJoyY", rightY);
+//        SmartDashboard.putNumber("LCurrentSpeed", leftCurrentSpeed);
     	robotDrive.tankDrive(leftCurrentSpeed, rightCurrentSpeed);
     }	
     

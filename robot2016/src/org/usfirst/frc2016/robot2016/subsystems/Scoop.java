@@ -37,7 +37,7 @@ public class Scoop extends Subsystem {
 	private boolean inSafeZoneFlag = false;
 
 	// How good does the position need to be
-	private final double AbsoluteTolerance = 10;
+	private final double AbsoluteTolerance = 5;
 
 	// Where we want the lift to be
 	private double desiredPosition;
@@ -153,19 +153,23 @@ public class Scoop extends Subsystem {
 	
 	// Returns true of the lift is at the desired position (done moving)
 	public boolean isPositioned() {
-		int position;
-		position = lift.getClosedLoopError();
+		double position;
+		position = Math.abs(desiredPosition - getPosition());
+		return (position <= AbsoluteTolerance);
+		/*position = getPositionError();
+				//lift.getClosedLoopError();
 		return (AbsoluteTolerance >= Math.abs(position));
-	}
+		 */
+		}
 	
-	// Returns the current postion error
-	public int getPositionError() {
+	// Returns the current position error
+	public double getPositionError() {
 		return lift.getClosedLoopError();
 	}
 
 	// Returns the current position
-	public int getPosition() {
-		return (int) lift.getPosition();
+	public double getPosition() {
+		return lift.getPosition();
 	}
 	
 	// Returns true if the lift has been calibrated
@@ -207,7 +211,8 @@ public class Scoop extends Subsystem {
 		SmartDashboard.putNumber("ScoopLift Desired Pos", lift.getSetpoint());
 		SmartDashboard.putNumber("ScoopLift Current Position", getPosition());
 		SmartDashboard.putNumber("ScoopLift Position Error", getPositionError());
-	}
+		//SmartDashboard.putBoolean("IS Positioned", isPositioned());
+		}
 
 
     public void initDefaultCommand() {

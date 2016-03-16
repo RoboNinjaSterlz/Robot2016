@@ -36,7 +36,7 @@ public class ShootElevator extends Subsystem {
 	private boolean needsCalibrate;
 
 	// How good does the position need to be
-	private final double AbsoluteTolerance = 0;
+	private final double AbsoluteTolerance = 1;
 	
 	// Labels for presets in robot prefs on dashboard
 	public final String[] ShootPositionLables = { 
@@ -149,10 +149,13 @@ public class ShootElevator extends Subsystem {
     	
     	// Returns true of the lift is at the desired position (done moving)
     	public boolean isPositioned() {
-    		int position;
-    		position = lift.getClosedLoopError();
+    		double position;
+    		position = Math.abs(desiredPosition - getPosition());
+    		return (position <= AbsoluteTolerance);
+/*    		position = lift.getClosedLoopError();
     		return (AbsoluteTolerance >= Math.abs(position));
-    	}
+*/
+    		}
     	
     	// Returns the current postion error
     	public int getPositionError() {
