@@ -121,8 +121,6 @@ public class OI {
         SmartDashboard.putData("CompScoopHome", new CompScoopHome());
         SmartDashboard.putData("CompDoLowGoal", new CompDoLowGoal());
         SmartDashboard.putData("CompShootHome", new CompShootHome());
-        SmartDashboard.putData("HookReset", new HookReset());
-        SmartDashboard.putData("HookDeploy", new HookDeploy());
         SmartDashboard.putData("lineFind", new lineFind());
         SmartDashboard.putData("ManualAim", new ManualAim());
         SmartDashboard.putData("ManualScoop", new ManualScoop());
@@ -131,8 +129,6 @@ public class OI {
         SmartDashboard.putData("CompShooterMedium", new CompShooterMedium());
         SmartDashboard.putData("CompShooterHigh", new CompShooterHigh());
         SmartDashboard.putData("CalibrateScoop", new CalibrateScoop());
-        SmartDashboard.putData("LiftLatchRelease", new LiftLatchRelease());
-        SmartDashboard.putData("ResetLift", new ResetLift());
         SmartDashboard.putData("CompDeployLift", new CompDeployLift());
         SmartDashboard.putData("GoStraight", new GoStraight());
         SmartDashboard.putData("CompParallelLowGoal", new CompParallelLowGoal());
