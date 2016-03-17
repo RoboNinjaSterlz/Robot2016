@@ -324,5 +324,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Shooter At Zero", scoop.isScoopAtHome());
     	SmartDashboard.putBoolean("Robot Calibrated",robotIsCalibrated);
     	SmartDashboard.putBoolean("Scoop in safe Zone", scoop.isScoopInSafeZone());
+		//SmartDashboard.putBoolean("Is Deployed", Robot.hook.isDeployed());
+    	
     	}
 }
