@@ -119,7 +119,7 @@ public class Scoop extends Subsystem {
     		needsCalibrate = false;
     	} else {
     		needsCalibrate = true;
-    		lift.set(.3); // Run back at 30% power
+    		lift.set(.4); // Run back at 30% power
     	}
     }
     
