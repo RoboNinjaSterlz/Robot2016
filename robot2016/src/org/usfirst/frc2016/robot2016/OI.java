@@ -104,7 +104,7 @@ public class OI {
         shooterHomeButton.whenPressed(new Shooter2Home());
         driveRight = new Joystick(1);
         
-        driveStraightButtonDone = new JoystickButton(driveRight, 6);
+        driveStraightButtonDone = new JoystickButton(driveRight, 11);
         driveStraightButtonDone.whenReleased(new TankDrive());
         driveStraightButton = new JoystickButton(driveRight, 11);
         driveStraightButton.whenPressed(new GoStraight());
