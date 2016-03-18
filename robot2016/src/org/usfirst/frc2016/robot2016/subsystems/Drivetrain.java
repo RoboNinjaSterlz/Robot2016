@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2016.robot2016.subsystems;
 
+import org.usfirst.frc2016.robot2016.Robot;
 import org.usfirst.frc2016.robot2016.RobotMap;
 import org.usfirst.frc2016.robot2016.commands.*;
 
@@ -67,6 +68,31 @@ public class Drivetrain extends Subsystem {
     
     public void arcadeDrive(double speed, double direction) {
     	robotDrive.arcadeDrive(speed, direction);
+    }
+    
+    public void gyroDrive(double speed, double angle) {
+    	double steer =  (Robot.gyro.getAngle() - angle);
+    	if (steer > 180) {
+    		steer = steer - 360;
+    	}
+    	else if (steer < -180) {
+    		steer = steer + 360;
+    	}
+    	steer *= -Robot.gyro.gyroP;
+    	
+    	if (steer > Robot.gyro.TURN_MAX) {
+    		steer = Robot.gyro.TURN_MAX;
+    	}
+    	else if (steer < -Robot.gyro.TURN_MAX) {
+    		steer = -Robot.gyro.TURN_MAX;
+    	}
+    	if (speed== 0) {
+    		//Use the joystick or stop if centered
+    		Robot.drivetrain.arcadeDrive(Robot.oi.driveRight.getY(), steer);
+    	}
+    	else {
+    		Robot.drivetrain.arcadeDrive(speed, steer);
+    	}
     }
     
     public void tankDrive(Joystick leftJoy, Joystick rightJoy) {
