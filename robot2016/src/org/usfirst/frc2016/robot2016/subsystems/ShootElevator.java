@@ -36,7 +36,7 @@ public class ShootElevator extends Subsystem {
 	private boolean needsCalibrate;
 
 	// How good does the position need to be
-	private final double AbsoluteTolerance = 1;
+	private final double AbsoluteTolerance = 3;
 	
 	// Labels for presets in robot prefs on dashboard
 	public final String[] ShootPositionLables = { 
