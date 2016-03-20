@@ -155,6 +155,9 @@ public class Scoop extends Subsystem {
 	public boolean isPositioned() {
 		double position;
 		position = Math.abs(desiredPosition - getPosition());
+    	if (lift.isFwdLimitSwitchClosed() && getPosition()==0) {
+    		lift.setPosition(0);
+    	}
 		return (position <= AbsoluteTolerance);
 		/*position = getPositionError();
 				//lift.getClosedLoopError();
