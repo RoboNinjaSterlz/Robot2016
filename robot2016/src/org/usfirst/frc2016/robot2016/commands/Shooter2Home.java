@@ -40,6 +40,7 @@ public class Shooter2Home extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.flashlight.off();
     	Robot.shootElevator.goTo(0);
     }
 
