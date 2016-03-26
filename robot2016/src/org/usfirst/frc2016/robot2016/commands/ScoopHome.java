@@ -38,6 +38,7 @@ public class ScoopHome extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.flashlight.off();
     	Robot.scoop.goTo(0);
     }
 

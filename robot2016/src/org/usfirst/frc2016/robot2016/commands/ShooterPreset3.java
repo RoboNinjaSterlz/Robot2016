@@ -40,6 +40,7 @@ public class ShooterPreset3 extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.flashlight.on();
     	Robot.shootElevator.goToPreset(3);
     }
 
