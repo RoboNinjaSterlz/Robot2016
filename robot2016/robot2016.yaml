@@ -470,6 +470,38 @@ Children:
         value: *id020
     Base: Subsystem
     Name: Winch
+  - Children:
+    - Children: []
+      Properties:
+        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '0'
+          name: Output Channel (Solenoid)
+          validators: *id002
+          value: '2'
+        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: '0'
+          name: Output PCM (Solenoid)
+          validators: *id004
+          value: '0'
+      Base: Solenoid
+      Name: StingerSolenoid
+    Properties:
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: []
+    Base: Subsystem
+    Name: Stinger
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -662,7 +694,7 @@ Children:
           name: Command
           type: Command
           validators: *id022
-          value: Shooter2Home
+          value: CompShootHome
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id023
           default: whileHeld
@@ -720,7 +752,7 @@ Children:
           name: Command
           type: Command
           validators: *id022
-          value: ShooterPreset2
+          value: CompShooterMedium
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id023
           default: whileHeld
@@ -749,7 +781,7 @@ Children:
           name: Command
           type: Command
           validators: *id022
-          value: ShooterPreset3
+          value: CompShooterHigh
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id023
           default: whileHeld
@@ -836,7 +868,7 @@ Children:
           name: Command
           type: Command
           validators: *id022
-          value: ScoopHome
+          value: CompScoopHome
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id023
           default: whileHeld
@@ -1231,7 +1263,7 @@ Children:
           command:
             base: *id035
             name: ScoopToClearLowBar
-            properties: &id074
+            properties: &id075
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -1290,7 +1322,7 @@ Children:
           command:
             base: *id035
             name: Rotate2Angle
-            properties: &id089
+            properties: &id090
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -1843,11 +1875,11 @@ Children:
         validators: null
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: CalibrateShooter
   - Children: []
-    Properties: &id068
+    Properties: &id069
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -1865,7 +1897,7 @@ Children:
     Base: Command
     Name: CheckScoopClearance
   - Children: []
-    Properties: &id059
+    Properties: &id060
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -1899,9 +1931,9 @@ Children:
         name: Commands
         validators: *id032
         value:
-        - &id061 !!robotbuilder.data.CommandGroupEntry
-          command:
-            base: &id060
+        - !!robotbuilder.data.CommandGroupEntry
+          command: &id068
+            base: &id059
               help: A command specifies an action that the robot can perform.
               name: Command
               properties:
@@ -1921,8 +1953,35 @@ Children:
                 value: *id058
               supports: {}
               type: Command
+            name: FlashlightOff
+            properties: &id104
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: Flashlight}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: []
+                name: Parameter presets
+                validators: null
+                value: []
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: false}
+          hasMatch: true
+          order: Parallel
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+        - &id061 !!robotbuilder.data.CommandGroupEntry
+          command:
+            base: *id059
             name: CheckShooterClearence
-            properties: *id059
+            properties: *id060
           hasMatch: true
           order: Sequential
           parameters:
@@ -1933,9 +1992,9 @@ Children:
           previous: null
         - !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id060
+            base: *id059
             name: ScoopHome
-            properties: &id071
+            properties: &id072
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -1980,10 +2039,10 @@ Children:
         validators: *id032
         value:
         - &id062 !!robotbuilder.data.CommandGroupEntry
-          command:
-            base: *id060
+          command: &id097
+            base: *id059
             name: ScoopToFloor
-            properties: &id072
+            properties: &id073
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -2007,10 +2066,10 @@ Children:
             value: []
           previous: null
         - &id067 !!robotbuilder.data.CommandGroupEntry
-          command:
-            base: *id060
+          command: &id098
+            base: *id059
             name: ShooterPreset1
-            properties: &id073
+            properties: &id074
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -2034,7 +2093,7 @@ Children:
             value: []
           previous: *id062
         - !!robotbuilder.data.CommandGroupEntry
-          command:
+          command: &id100
             base:
               help: A group of commands set to run together in a prescribed way.
               name: Command Group
@@ -2059,7 +2118,7 @@ Children:
               supports: {}
               type: Command
             name: PushBall
-            properties: &id070
+            properties: &id071
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -2079,7 +2138,7 @@ Children:
                   command:
                     base: *id035
                     name: ShooterPushBall
-                    properties: &id083
+                    properties: &id084
                       Parameters: !!robotbuilder.data.properties.ParametersProperty
                         default: []
                         name: Parameters
@@ -2105,7 +2164,7 @@ Children:
                     value: []
                   previous: null
                 - !!robotbuilder.data.CommandGroupEntry
-                  command: &id075
+                  command: &id076
                     base: *id035
                     name: ApplyVacuum
                     properties: *id065
@@ -2132,7 +2191,7 @@ Children:
     Base: Command Group
     Name: CompDoLowGoal
   - Children: []
-    Properties: &id079
+    Properties: &id080
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -2148,11 +2207,21 @@ Children:
         name: Commands
         validators: *id032
         value:
-        - &id069 !!robotbuilder.data.CommandGroupEntry
-          command: &id084
-            base: *id060
+        - !!robotbuilder.data.CommandGroupEntry
+          command: *id068
+          hasMatch: true
+          order: Parallel
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+        - &id070 !!robotbuilder.data.CommandGroupEntry
+          command: &id085
+            base: *id059
             name: CheckScoopClearance
-            properties: *id068
+            properties: *id069
           hasMatch: true
           order: Sequential
           parameters:
@@ -2162,10 +2231,10 @@ Children:
             value: []
           previous: null
         - !!robotbuilder.data.CommandGroupEntry
-          command:
-            base: *id060
+          command: &id102
+            base: *id059
             name: Shooter2Home
-            properties: &id081
+            properties: &id082
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -2187,7 +2256,7 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id069
+          previous: *id070
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
@@ -2265,7 +2334,7 @@ Children:
     Base: Command
     Name: lineFind
   - Children: []
-    Properties: &id098
+    Properties: &id099
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -2319,7 +2388,7 @@ Children:
     Base: Command
     Name: ManualScoop
   - Children: []
-    Properties: *id070
+    Properties: *id071
     Base: Command Group
     Name: PushBall
   - Children: []
@@ -2417,19 +2486,19 @@ Children:
     Base: Command
     Name: ScoopToClearOfShooter
   - Children: []
-    Properties: *id071
+    Properties: *id072
     Base: Command
     Name: ScoopHome
   - Children: []
-    Properties: *id072
+    Properties: *id073
     Base: Command
     Name: ScoopToFloor
   - Children: []
-    Properties: *id073
+    Properties: *id074
     Base: Command
     Name: ShooterPreset1
   - Children: []
-    Properties: &id085
+    Properties: &id086
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -2447,7 +2516,7 @@ Children:
     Base: Command
     Name: ShooterPreset2
   - Children: []
-    Properties: &id087
+    Properties: &id088
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -2483,7 +2552,7 @@ Children:
     Base: Command
     Name: ScoopToShoot
   - Children: []
-    Properties: *id074
+    Properties: *id075
     Base: Command
     Name: ScoopToClearLowBar
   - Children: []
@@ -2503,11 +2572,11 @@ Children:
         name: Commands
         validators: *id032
         value:
-        - &id076 !!robotbuilder.data.CommandGroupEntry
+        - &id077 !!robotbuilder.data.CommandGroupEntry
           command:
             base: *id035
             name: ShooterForward
-            properties: &id082
+            properties: &id083
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -2530,8 +2599,8 @@ Children:
             validators: null
             value: []
           previous: null
-        - &id080 !!robotbuilder.data.CommandGroupEntry
-          command: *id075
+        - &id081 !!robotbuilder.data.CommandGroupEntry
+          command: *id076
           hasMatch: true
           order: Sequential
           parameters:
@@ -2539,7 +2608,7 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id076
+          previous: *id077
         - !!robotbuilder.data.CommandGroupEntry
           command:
             base:
@@ -2549,24 +2618,24 @@ Children:
               - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
                 validators: null, value: true}
               - !!robotbuilder.data.properties.ListProperty
-                default: &id077 []
+                default: &id078 []
                 name: Commands
                 validators: [List]
-                value: *id077
+                value: *id078
               - !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
                 validators: null
                 value: []
               - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id078 []
+                default: &id079 []
                 name: Parameter presets
                 validators: null
-                value: *id078
+                value: *id079
               supports: {}
               type: Command
             name: CompShootHome
-            properties: *id079
+            properties: *id080
           hasMatch: true
           order: Parallel
           parameters:
@@ -2574,21 +2643,21 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id080
+          previous: *id081
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
     Name: Shoot
   - Children: []
-    Properties: *id081
+    Properties: *id082
     Base: Command
     Name: Shooter2Home
   - Children: []
-    Properties: *id082
+    Properties: *id083
     Base: Command
     Name: ShooterForward
   - Children: []
-    Properties: *id083
+    Properties: *id084
     Base: Command
     Name: ShooterPushBall
   - Children: []
@@ -2626,8 +2695,8 @@ Children:
         name: Commands
         validators: *id032
         value:
-        - &id086 !!robotbuilder.data.CommandGroupEntry
-          command: *id084
+        - &id087 !!robotbuilder.data.CommandGroupEntry
+          command: *id085
           hasMatch: true
           order: Sequential
           parameters:
@@ -2638,9 +2707,9 @@ Children:
           previous: null
         - !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id060
+            base: *id059
             name: ShooterPreset2
-            properties: *id085
+            properties: *id086
           hasMatch: true
           order: Sequential
           parameters:
@@ -2648,9 +2717,9 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id086
+          previous: *id087
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
     Name: CompShooterMedium
   - Children: []
@@ -2670,11 +2739,8 @@ Children:
         name: Commands
         validators: *id032
         value:
-        - &id088 !!robotbuilder.data.CommandGroupEntry
-          command:
-            base: *id035
-            name: CheckShooterClearence
-            properties: *id059
+        - &id089 !!robotbuilder.data.CommandGroupEntry
+          command: *id085
           hasMatch: true
           order: Sequential
           parameters:
@@ -2685,9 +2751,9 @@ Children:
           previous: null
         - !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id035
+            base: *id059
             name: ShooterPreset3
-            properties: *id087
+            properties: *id088
           hasMatch: true
           order: Sequential
           parameters:
@@ -2695,7 +2761,7 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id088
+          previous: *id089
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
@@ -2715,7 +2781,7 @@ Children:
         validators: null
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: CalibrateScoop
   - Children: []
@@ -2723,11 +2789,11 @@ Children:
     Base: Command
     Name: DelaySeconds
   - Children: []
-    Properties: *id089
+    Properties: *id090
     Base: Command
     Name: Rotate2Angle
   - Children: []
-    Properties: &id091
+    Properties: &id092
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -2745,7 +2811,7 @@ Children:
     Base: Command
     Name: LiftLatchRelease
   - Children: []
-    Properties: &id094
+    Properties: &id095
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -2779,9 +2845,9 @@ Children:
         name: Commands
         validators: *id032
         value:
-        - &id093 !!robotbuilder.data.CommandGroupEntry
+        - &id094 !!robotbuilder.data.CommandGroupEntry
           command:
-            base: &id092
+            base: &id093
               help: A command specifies an action that the robot can perform.
               name: Command
               properties:
@@ -2795,14 +2861,14 @@ Children:
                 validators: null
                 value: []
               - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id090 []
+                default: &id091 []
                 name: Parameter presets
                 validators: null
-                value: *id090
+                value: *id091
               supports: {}
               type: Command
             name: LiftLatchRelease
-            properties: *id091
+            properties: *id092
           hasMatch: true
           order: Sequential
           parameters:
@@ -2811,9 +2877,9 @@ Children:
             validators: null
             value: []
           previous: null
-        - &id095 !!robotbuilder.data.CommandGroupEntry
+        - &id096 !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id092
+            base: *id093
             name: DelaySeconds
             properties: *id038
           hasMatch: true
@@ -2825,12 +2891,12 @@ Children:
             value:
             - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: seconds,
               type: double, value: '2'}
-          previous: *id093
+          previous: *id094
         - !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id092
+            base: *id093
             name: ResetLift
-            properties: *id094
+            properties: *id095
           hasMatch: true
           order: Sequential
           parameters:
@@ -2838,7 +2904,7 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id095
+          previous: *id096
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
@@ -2858,7 +2924,7 @@ Children:
         validators: null
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: GoStraight
   - Children: []
@@ -2879,29 +2945,7 @@ Children:
         validators: *id032
         value:
         - !!robotbuilder.data.CommandGroupEntry
-          command:
-            base: &id097
-              help: A command specifies an action that the robot can perform.
-              name: Command
-              properties:
-              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-                name: Requires, type: Subsystem, validators: null, value: None}
-              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
-                validators: null, value: true}
-              - !!robotbuilder.data.properties.ParametersProperty
-                default: []
-                name: Parameters
-                validators: null
-                value: []
-              - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id096 []
-                name: Parameter presets
-                validators: null
-                value: *id096
-              supports: {}
-              type: Command
-            name: ScoopToFloor
-            properties: *id072
+          command: *id097
           hasMatch: true
           order: Parallel
           parameters:
@@ -2911,10 +2955,7 @@ Children:
             value: []
           previous: null
         - !!robotbuilder.data.CommandGroupEntry
-          command:
-            base: *id097
-            name: ShooterPreset1
-            properties: *id073
+          command: *id098
           hasMatch: true
           order: Parallel
           parameters:
@@ -2925,9 +2966,9 @@ Children:
           previous: null
         - &id101 !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id097
+            base: *id059
             name: WaitForBoth
-            properties: *id098
+            properties: *id099
           hasMatch: true
           order: Sequential
           parameters:
@@ -2936,33 +2977,8 @@ Children:
             validators: null
             value: []
           previous: null
-        - &id102 !!robotbuilder.data.CommandGroupEntry
-          command:
-            base:
-              help: A group of commands set to run together in a prescribed way.
-              name: Command Group
-              properties:
-              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
-                validators: null, value: true}
-              - !!robotbuilder.data.properties.ListProperty
-                default: &id099 []
-                name: Commands
-                validators: *id032
-                value: *id099
-              - !!robotbuilder.data.properties.ParametersProperty
-                default: []
-                name: Parameters
-                validators: null
-                value: []
-              - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id100 []
-                name: Parameter presets
-                validators: null
-                value: *id100
-              supports: {}
-              type: Command
-            name: PushBall
-            properties: *id070
+        - &id103 !!robotbuilder.data.CommandGroupEntry
+          command: *id100
           hasMatch: true
           order: Sequential
           parameters:
@@ -2972,10 +2988,7 @@ Children:
             value: []
           previous: *id101
         - !!robotbuilder.data.CommandGroupEntry
-          command:
-            base: *id097
-            name: Shooter2Home
-            properties: *id081
+          command: *id102
           hasMatch: true
           order: Sequential
           parameters:
@@ -2983,7 +2996,7 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id102
+          previous: *id103
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
@@ -3007,21 +3020,7 @@ Children:
     Base: Command
     Name: FlashlightOn
   - Children: []
-    Properties:
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Flashlight}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value: []
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
+    Properties: *id104
     Base: Command
     Name: FlashlightOff
   - Children: []
@@ -3052,10 +3051,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Winch}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id103 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id103
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
@@ -3068,10 +3067,10 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id104 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id104
+        value: []
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
@@ -3079,7 +3078,7 @@ Children:
         value:
         - &id107 !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id097
+            base: *id059
             name: ScoopToClearOfShooter
             properties: *id105
           hasMatch: true
@@ -3092,7 +3091,7 @@ Children:
           previous: null
         - &id109 !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id097
+            base: *id059
             name: HookDeploy
             properties: *id106
           hasMatch: true
@@ -3105,7 +3104,7 @@ Children:
           previous: *id107
         - !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id097
+            base: *id059
             name: LiftHookWinch
             properties: *id108
           hasMatch: true

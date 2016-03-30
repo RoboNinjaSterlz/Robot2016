@@ -92,7 +92,7 @@ public class Scoop extends Subsystem {
     	lift.ClearIaccum();
     	//lift.setVoltageRampRate(0);
     	//lift.setCloseLoopRampRate(.00);
-    	lift.configMaxOutputVoltage(8);
+    	//lift.configMaxOutputVoltage(8);
     	// Needed for calibrate
     	lift.changeControlMode(TalonControlMode.PercentVbus);	
     }

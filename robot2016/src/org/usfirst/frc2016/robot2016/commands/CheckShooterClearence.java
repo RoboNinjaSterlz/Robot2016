@@ -39,7 +39,8 @@ public class CheckShooterClearence extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (!Robot.shootElevator.safeToHomeScoop()) {
-    		Robot.shootElevator.goToPreset(Robot.shootElevator.LOW);
+//    		Robot.shootElevator.goToPreset(Robot.shootElevator.LOW);
+    		Robot.shootElevator.goTo(0);
     	}
     }
 

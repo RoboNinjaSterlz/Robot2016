@@ -173,7 +173,7 @@ public class ShootElevator extends Subsystem {
     	}
     	
     	public boolean safeToHomeScoop() {
-    		return (isShooterAtHome() || (getPosition() > presetPositions[LOW]));
+    		return (isShooterAtHome() ); //|| (getPosition() < presetPositions[LOW]));
     	}
     	
         
