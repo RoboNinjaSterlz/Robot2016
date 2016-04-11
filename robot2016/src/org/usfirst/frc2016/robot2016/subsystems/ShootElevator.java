@@ -28,6 +28,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class ShootElevator extends Subsystem {
 	
+	private boolean didWeMove=true;
+	
 	public double presetPositions[] = new double[5];
 	// Desired encoder count for positioning the lifter.
 	private double desiredPosition = 0;
@@ -77,8 +79,8 @@ public class ShootElevator extends Subsystem {
     	lift.enableReverseSoftLimit(false);
     	lift.clearStickyFaults();
     	lift.ClearIaccum();
-    	//lift.setVoltageRampRate(0);
-    	//lift.setCloseLoopRampRate(.00);
+    	//lift.setVoltageRampRate(6.0);
+    	//lift.setCloseLoopRampRate(.01);
     	//lift.configMaxOutputVoltage(12);
     	// Needed for calibrate
     	lift.changeControlMode(TalonControlMode.PercentVbus);	
@@ -125,7 +127,11 @@ public class ShootElevator extends Subsystem {
         	}
         public void goToPreset(int position) {
         	
+        	didWeMove = false;
         	if ((position >= 1) && (position <= presetPositions.length)) {
+        		if (Math.abs(presetPositions[position-1] - desiredPosition) > AbsoluteTolerance ) {
+        			didWeMove=true;
+        		}
         		goTo(presetPositions[position-1]);
           	}
         }
@@ -167,6 +173,10 @@ public class ShootElevator extends Subsystem {
     		return (int) lift.getPosition();
     	}
     	
+    	public boolean shooterMoved() {
+    		return (didWeMove);
+    	}
+    	
     	// Returns true if the lift has been calibrated
     	public boolean isCalibrated(){
     		return !needsCalibrate;
@@ -182,6 +192,7 @@ public class ShootElevator extends Subsystem {
     		SmartDashboard.putNumber("ShootLift Desired Pos", lift.getSetpoint());
     		SmartDashboard.putNumber("Shooter Position", getPosition());
     		SmartDashboard.putNumber("Shooter Position Error", getPositionError());
+    		SmartDashboard.putBoolean("Did Move",shooterMoved());
 //    		SmartDashboard.putBoolean("limit sensor", shooterLowerLimit.get());
     	}
         

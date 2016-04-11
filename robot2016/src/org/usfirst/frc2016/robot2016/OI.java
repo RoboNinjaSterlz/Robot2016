@@ -95,7 +95,7 @@ public class OI {
         scoop2Floor = new JoystickButton(operatorJoy, 3);
         scoop2Floor.whenPressed(new ScoopToFloor());
         shootOperatorButton = new JoystickButton(operatorJoy, 1);
-        shootOperatorButton.whenPressed(new Shoot());
+        shootOperatorButton.whenPressed(new CompDoHighGoal());
         shootPresetHighButton = new JoystickButton(operatorJoy, 11);
         shootPresetHighButton.whenPressed(new CompShooterHigh());
         shootPresetMedButton = new JoystickButton(operatorJoy, 9);
