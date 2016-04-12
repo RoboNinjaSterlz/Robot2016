@@ -192,7 +192,7 @@ public class ShootElevator extends Subsystem {
     		SmartDashboard.putNumber("ShootLift Desired Pos", lift.getSetpoint());
     		SmartDashboard.putNumber("Shooter Position", getPosition());
     		SmartDashboard.putNumber("Shooter Position Error", getPositionError());
-    		SmartDashboard.putBoolean("Did Move",shooterMoved());
+    		//SmartDashboard.putBoolean("Did Move",shooterMoved());
 //    		SmartDashboard.putBoolean("limit sensor", shooterLowerLimit.get());
     	}
         
