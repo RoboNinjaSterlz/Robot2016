@@ -80,7 +80,7 @@ public class ShootElevator extends Subsystem {
     	lift.clearStickyFaults();
     	lift.ClearIaccum();
     	//lift.setVoltageRampRate(6.0);
-    	//lift.setCloseLoopRampRate(.01);
+    	//lift.setCloseLoopRampRate(.);
     	//lift.configMaxOutputVoltage(12);
     	// Needed for calibrate
     	lift.changeControlMode(TalonControlMode.PercentVbus);	
