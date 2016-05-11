@@ -72,6 +72,7 @@ public class Gyro extends Subsystem {
         //SmartDashboard.putData("IMU", imu);
     	//artDashboard.putNumber("Gyro Heading", digGyro.getAngle());
     	SmartDashboard.putNumber("Gyro Heading", navxGyro.getAngle());
+    	SmartDashboard.putNumber("Pitch",navxGyro.getPitch() );
     }
     
     public void calibrate() {
