@@ -146,8 +146,8 @@ public class Robot extends IterativeRobot {
         defenseChooser.addObject("Ramparts Auto", new AutoRamparts());
         defenseChooser.addObject("Rock Wall Auto", new AutoRockWall());
         defenseChooser.addObject("Rough Terrain Auto", new AutoRoughTerrain());
-        //defenseChooser.addObject("Portcullis Auto",  new AutoPortcullis());
-        //defenseChooser.addObject("Cheval de Frise Auto", new AutoChevaldeFrise());
+        defenseChooser.addObject("Portcullis Auto",  new AutoPortcullis());
+        defenseChooser.addObject("Cheval de Frise Auto", new AutoChevaldeFrise());
         //defenseChooser.addObject("Drawbridge Auto", new AutoDrawbridge());
         defenseChooser.addObject("Do Nothing Auto", new AutoSallyPort());
         defenseChooser.addObject("High Goal Auto", new AutoHighGoal());
