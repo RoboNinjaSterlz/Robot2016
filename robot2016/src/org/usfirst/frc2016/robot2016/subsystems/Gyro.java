@@ -68,11 +68,13 @@ public class Gyro extends Subsystem {
     	 */
     }
     
+    
+    
     public void periodic() {
         //SmartDashboard.putData("IMU", imu);
     	//artDashboard.putNumber("Gyro Heading", digGyro.getAngle());
     	SmartDashboard.putNumber("Gyro Heading", navxGyro.getAngle());
-    	SmartDashboard.putNumber("Pitch",navxGyro.getPitch() );
+    	SmartDashboard.putNumber("Roll",navxGyro.getRoll() );
     }
     
     public void calibrate() {
@@ -103,6 +105,12 @@ public class Gyro extends Subsystem {
     	return angle;
     }
 
+    public double getRoll() {
+    	return navxGyro.getRoll();
+    	
+    		
+    	}
+    	 
     public void reset() {
     	//gGyro.reset();
     	navxGyro.zeroYaw();
