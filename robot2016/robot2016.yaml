@@ -2554,7 +2554,7 @@ Children:
         validators: null
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
+        name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: DisplayCameraResults
   - Children: []
@@ -2887,7 +2887,7 @@ Children:
               - !!robotbuilder.data.properties.ListProperty
                 default: &id096 []
                 name: Commands
-                validators: *id032
+                validators: [List]
                 value: *id096
               - !!robotbuilder.data.properties.ParametersProperty
                 default: []
@@ -3926,10 +3926,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Gyro}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id146 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id146
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
