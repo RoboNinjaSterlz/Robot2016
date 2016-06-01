@@ -38,8 +38,8 @@ public class DisplayCameraResults extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//Robot.vision.loadContours();
-    	//Robot.vision.displayContours();
+    	Robot.vision.loadContours();
+    	Robot.vision.displayContours();
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -121,6 +121,7 @@ public class OI {
 
 
         // SmartDashboard Buttons
+        SmartDashboard.putData("DisplayCameraResults", new DisplayCameraResults());
         SmartDashboard.putData("ManualAim", new ManualAim());
         SmartDashboard.putData("ManualScoop", new ManualScoop());
         SmartDashboard.putData("TankDrive", new TankDrive());
