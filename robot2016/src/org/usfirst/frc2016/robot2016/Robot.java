@@ -161,6 +161,7 @@ public class Robot extends IterativeRobot {
         robotPrefs.setupPrefs();
         robotPrefs.doLoadPrefs();
         shooter.startCompressor();
+        loadGrip();
     }
 
     /**
