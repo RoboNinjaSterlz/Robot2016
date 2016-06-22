@@ -61,7 +61,11 @@ public class Hook extends Subsystem {
     public boolean ispositioned() {
     return (desiredposition == hookServo.get());	
     	
-    }	
+    }
+    
+    public void setDeploy() {
+    	deployed = true;
+    }
     
     public void initDefaultCommand() {
       
