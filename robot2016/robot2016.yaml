@@ -3379,7 +3379,7 @@ Children:
         validators: *id032
         value:
         - &id122 !!robotbuilder.data.CommandGroupEntry
-          command: &id149
+          command: &id148
             base: *id110
             name: ScoopToClearOfShooter
             properties: *id091
@@ -4011,7 +4011,7 @@ Children:
     Base: Command
     Name: CameraDrive
   - Children: []
-    Properties: &id150
+    Properties: &id149
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -4036,14 +4036,17 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id148 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id148
+        value: []
       Commands: !!robotbuilder.data.properties.ListProperty
-        default: &id152
-        - &id151 !!robotbuilder.data.CommandGroupEntry
-          command: *id149
+        default: []
+        name: Commands
+        validators: *id032
+        value:
+        - &id150 !!robotbuilder.data.CommandGroupEntry
+          command: *id148
           hasMatch: true
           order: Sequential
           parameters:
@@ -4056,7 +4059,7 @@ Children:
           command:
             base: *id110
             name: RaiseKenHook
-            properties: *id150
+            properties: *id149
           hasMatch: true
           order: Sequential
           parameters:
@@ -4064,10 +4067,7 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id151
-        name: Commands
-        validators: *id032
-        value: *id152
+          previous: *id150
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
@@ -4082,14 +4082,32 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Winch}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id153 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id153
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: RaiseAntenna
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id151 []
+        name: Parameter presets
+        validators: null
+        value: *id151
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: LowerAntenna
   Properties: {}
   Base: Commands
   Name: Commands
